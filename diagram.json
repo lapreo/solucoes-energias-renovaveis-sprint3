@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "author": "Grupo ChargeGrid Intelligence",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    { "type": "wokwi-led", "id": "led_verde", "top": -175, "left": -240, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "led_amarelo", "top": -175, "left": -160, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "led_vermelho", "top": -175, "left": -80, "attrs": { "color": "red" } },
+
+    { "type": "wokwi-resistor", "id": "r_verde", "top": -130, "left": -235, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r_amarelo", "top": -130, "left": -155, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r_vermelho", "top": -130, "left": -75, "rotate": 90, "attrs": { "value": "220" } },
+
+    { "type": "wokwi-potentiometer", "id": "pot_geracao", "top": 60, "left": -220, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot_consumo", "top": 60, "left": -60, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP16", "r_verde:1", "green", [ "v20" ] ],
+    [ "r_verde:2", "led_verde:A", "green", [ "v10" ] ],
+    [ "led_verde:C", "pico:GND.1", "black", [ "v0", "h-90", "v210" ] ],
+
+    [ "pico:GP17", "r_amarelo:1", "green", [ "v20" ] ],
+    [ "r_amarelo:2", "led_amarelo:A", "green", [ "v10" ] ],
+    [ "led_amarelo:C", "pico:GND.1", "black", [ "v0", "h-10", "v210" ] ],
+
+    [ "pico:GP18", "r_vermelho:1", "green", [ "v20" ] ],
+    [ "r_vermelho:2", "led_vermelho:A", "green", [ "v10" ] ],
+    [ "led_vermelho:C", "pico:GND.1", "black", [ "v0", "h70", "v210" ] ],
+
+    [ "pot_geracao:VCC", "pico:3V3", "red", [ "v-20", "h60", "v-60" ] ],
+    [ "pot_geracao:GND", "pico:GND.2", "black", [ "v20", "h60", "v40" ] ],
+    [ "pot_geracao:SIG", "pico:GP26", "blue", [ "v-10", "h-20" ] ],
+
+    [ "pot_consumo:VCC", "pico:3V3", "red", [ "v-20", "h60", "v-60" ] ],
+    [ "pot_consumo:GND", "pico:GND.3", "black", [ "v20", "h60", "v40" ] ],
+    [ "pot_consumo:SIG", "pico:GP27", "blue", [ "v-10", "h-20" ] ]
+  ],
+  "dependencies": {}
+}
