@@ -1,15 +1,8 @@
-"""Lógica de decisão do Controle Inteligente de Sessão de Recarga — sem nenhuma
-dependência de hardware (nada de `machine`), para poder ser testada em Python comum
-(`pytest`) antes de rodar no Raspberry Pi Pico / Wokwi.
-
-ASSUNÇÃO IMPORTANTE (o enunciado não dá esse número, então documentamos aqui): definimos
-POTENCIA_NOMINAL_RECARGA_W = 2000 W como a potência que uma recarga "plena" (não reduzida)
-precisa ter disponível. Isso é compatível com os três exemplos do enunciado:
+"""
     2500 W disponível -> autorizada  (2500 >= 2000)
     300  W disponível -> reduzida    (0 < 300 < 2000)
     -800 W disponível -> bloqueada   (-800 <= 0)
-Se o grupo tiver um valor oficial diferente (por exemplo, a potência nominal do
-carregador residencial real), troquem só esta constante — o resto do código não muda.
+
 """
 POTENCIA_NOMINAL_RECARGA_W = 2000
 
